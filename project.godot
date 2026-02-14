@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="out_of_time"
-run/main_scene="uid://blgife8kpigex"
+run/main_scene="uid://2fqae27pa5xt"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

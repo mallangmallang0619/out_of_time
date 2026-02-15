@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export_subgroup("Nodes")
 @export var gravity_component: GravityComponent
 @export var movement_component: MovementComponent
+@export var animation_component: AnimationComponent
+
+var is_dead: bool = false
 
 # --- Ability inventory ---
 var has_gun: bool = false      # for double jump
@@ -22,6 +25,9 @@ func _ready():
 	shield_speed_timer.one_shot = true
 	shield_speed_timer.wait_time = 5.0
 	shield_speed_timer.connect("timeout", Callable(self, "_on_shield_speed_timeout"))
+	_animated_sprite.animation_finished.connect(_on_animation_finished)
+	if _animated_sprite.sprite_frames and _animated_sprite.sprite_frames.has_animation("death"):
+		_animated_sprite.sprite_frames.set_animation_loop("death", false)
 
 func grant_gun():
 	has_gun = true
@@ -49,7 +55,30 @@ func _on_shield_speed_timeout():
 		movement_component.speed = original_speed
 		print("Speed boost ended")
 
+func die() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+	velocity = Vector2.ZERO
+	
+	#play death animation
+	if _animated_sprite.sprite_frames and _animated_sprite.sprite_frames.has_animation("death"):
+		_animated_sprite.play("death")
+	else:
+		#reset the death timer instead of from killzone
+		get_tree().reload_current_scene()
+
+func _on_animation_finished() -> void:
+	if is_dead and _animated_sprite.animation == &"death":
+		get_tree().reload_current_scene()
+
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		move_and_slide()
+		return
+
 	gravity_component.handle_gravity(self, delta)
 	movement_component.get_input(self, delta)
 	move_and_slide()
+	animation_component.update_animation(self)

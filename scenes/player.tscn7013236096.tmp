@@ -217,5 +217,3 @@ script = ExtResource("4_dqkch")
 wait_time = 0.12
 one_shot = true
 script = ExtResource("4_dqkch")
-
-[connection signal="shield_pickup" from="." to="." method="_on_shield_pickup"]

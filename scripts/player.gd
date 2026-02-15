@@ -7,9 +7,14 @@ extends CharacterBody2D
 @export var movement_component: MovementComponent
 
 # --- Ability inventory ---
-var has_gun: bool = false      # for double jump
-var has_sword: bool = false    # for wall jump
-var has_shield: bool = false   # for temporary speed
+var has_gun: bool = false		# for double jump
+var has_sword: bool = false		# for wall jump
+var has_shield: bool = false	# for temporary speed+
+
+# Signals for the UI
+
+signal shield_pickup(value)
+
 
 # --- Shield speed boost ---
 var shield_speed_timer: Timer = Timer.new()
@@ -33,6 +38,7 @@ func grant_sword():
 
 func grant_shield():
 	has_shield = true
+	emit_signal("shield_pickup", has_shield)
 	print("Speed boost acquired!")
 	if movement_component:
 		# Store original speed once

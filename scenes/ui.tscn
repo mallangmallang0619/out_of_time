@@ -1,51 +1,45 @@
-[gd_scene format=3 uid="uid://b20a5300iu60y"]
+[gd_scene format=3 uid="uid://dc3o0conf3881"]
 
-[ext_resource type="Texture2D" uid="uid://puc81yjndvfq" path="res://assets/sprites/itemsword.png" id="1_gdt2y"]
-[ext_resource type="Texture2D" uid="uid://dduaf35jqlu86" path="res://assets/sprites/item_shield.png" id="2_wm3ai"]
-[ext_resource type="Texture2D" uid="uid://djp6xk7ym12ma" path="res://assets/sprites/item_gun.png" id="3_8dubc"]
-[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_p7vwb"]
-[ext_resource type="Script" uid="uid://cjn1vbv33ugix" path="res://scripts/time_label.gd" id="5_wm3ai"]
+[ext_resource type="Texture2D" uid="uid://puc81yjndvfq" path="res://assets/sprites/itemsword.png" id="1_hfxbw"]
+[ext_resource type="Texture2D" uid="uid://dduaf35jqlu86" path="res://assets/sprites/item_shield.png" id="2_agviq"]
+[ext_resource type="Texture2D" uid="uid://djp6xk7ym12ma" path="res://assets/sprites/item_gun.png" id="3_8tx0x"]
+[ext_resource type="Script" uid="uid://cwhaevg32n8b2" path="res://scripts/UI/ui_shield.gd" id="3_xpksx"]
+[ext_resource type="Script" uid="uid://dgkmdlv31lxoi" path="res://scripts/UI/ui_gun.gd" id="4_3wlde"]
+[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_b7qlu"]
+[ext_resource type="Script" uid="uid://cjn1vbv33ugix" path="res://scripts/time_label.gd" id="5_dilx4"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ktti3"]
-font = ExtResource("4_p7vwb")
+[sub_resource type="LabelSettings" id="LabelSettings_fdp8w"]
+font = ExtResource("4_b7qlu")
 
-[node name="UI" type="Control" unique_id=1574264612]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TestUI" type="CanvasLayer" unique_id=2132827783]
 
-[node name="sword_icon" type="TextureRect" parent="." unique_id=1228370990]
-layout_mode = 0
+[node name="sword_icon" type="TextureRect" parent="." unique_id=325619661]
 offset_top = 19.0
 offset_right = 32.0
 offset_bottom = 51.0
-texture = ExtResource("1_gdt2y")
+texture = ExtResource("1_hfxbw")
 
-[node name="shield_icon" type="TextureRect" parent="." unique_id=861058582]
-layout_mode = 0
+[node name="shield_icon" type="TextureRect" parent="." unique_id=1260365515 groups=["Interactions"]]
 offset_left = 21.0
 offset_top = 21.0
 offset_right = 53.0
 offset_bottom = 53.0
-texture = ExtResource("2_wm3ai")
+texture = ExtResource("2_agviq")
+script = ExtResource("3_xpksx")
 
-[node name="gun_icon" type="TextureRect" parent="." unique_id=1117198386]
-layout_mode = 0
+[node name="gun_icon" type="TextureRect" parent="." unique_id=135591706]
 offset_left = 50.0
 offset_top = 19.0
 offset_right = 82.0
 offset_bottom = 51.0
-texture = ExtResource("3_8dubc")
+texture = ExtResource("3_8tx0x")
+script = ExtResource("4_3wlde")
 
-[node name="Timer" type="Label" parent="." unique_id=1307898456]
-layout_mode = 0
+[node name="Timer" type="Label" parent="." unique_id=1463482862]
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 81.0
 offset_bottom = 21.0
 text = "00:00"
-label_settings = SubResource("LabelSettings_ktti3")
-script = ExtResource("5_wm3ai")
+label_settings = SubResource("LabelSettings_fdp8w")
+script = ExtResource("5_dilx4")

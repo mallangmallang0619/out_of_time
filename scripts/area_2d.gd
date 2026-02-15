@@ -39,7 +39,7 @@ func is_position_free(position: Vector2) -> bool:
 	# test to see if item in a wall
 	var query := PhysicsShapeQueryParameters2D.new()
 	query.shape = shape
-	query.transform = Transform2D(0, position)
+	query.transform = Transform2D(0, position)  
 	query.collision_mask = wall_collision_mask
 	
 	var result = space_state.intersect_shape(query)

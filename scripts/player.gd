@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var jump_speed = -200
 @export var acceleration = 10
 @export var friction = 6
+@export var wall_jump_x = 150   # horizontal push away from wall
+@export var wall_jump_y = -200  # vertical jump strength
+@export var wall_slide_speed = 40  # optional: slow sliding down walls
 @onready var _animated_sprite = $AnimatedSprite2D
 var jump_counter = 0
 
@@ -30,21 +33,33 @@ func add_inputs():
 #basic input handler
 func get_input(delta):
 	var direction = Input.get_axis("move_left", "move_right")
-	if(is_on_floor()):
+	
+	if is_on_floor():
 		jump_counter = 0
+	
 	if direction:
-		velocity.x = lerp(velocity.x, direction  *speed, acceleration*  delta)
-		#_animated_sprite.play("Run")
+		velocity.x = lerp(velocity.x, direction * speed, acceleration * delta)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
-		#_animated_sprite.play("Idle")
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_speed
-	elif Input.is_action_just_pressed("jump") and not is_on_floor() and jump_counter == 0:
-		velocity.y = 0
-		velocity.y = jump_speed
-		jump_counter += 1
-	
+
+	if is_on_wall() and not is_on_floor() and velocity.y > 0:
+		velocity.y = min(velocity.y, wall_slide_speed)
+
+	if Input.is_action_just_pressed("jump"):
+		
+		if is_on_floor():
+			velocity.y = jump_speed
+		
+		elif is_on_wall():
+			var wall_dir = get_wall_normal().x
+			velocity.x = wall_dir * wall_jump_x
+			velocity.y = wall_jump_y
+			jump_counter = 1  # prevents extra jump abuse
+		
+		# Double jump
+		elif jump_counter == 0:
+			velocity.y = jump_speed
+			jump_counter += 1
 
 
 func _physics_process(delta):

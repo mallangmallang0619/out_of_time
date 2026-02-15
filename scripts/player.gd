@@ -103,6 +103,8 @@ func _physics_process(delta: float) -> void:
 	animation_component.update_animation(self)
 
 	# --- Update score based on x-distance ---
-	player.x = int(global_position.x-137)  
+	player.x = int(global_position.x - 137)
+	if player.x > player.best_x:
+		player.best_x = player.x
 
-	
+		

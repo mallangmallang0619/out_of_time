@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://scenes/killzone.tscn" id="9_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://c6eurvo11hoql" path="res://scenes/slime.tscn" id="10_0otvx"]
 [ext_resource type="AudioStream" uid="uid://c5nk0me3l3te8" path="res://assets/music/time_for_adventure.mp3" id="13_kv3my"]
-[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="14_endui"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kv3my"]
 load_path = "res://.godot/imported/Asset_13.png-dca5bc2db883b9f20774ee82d6faffb3.ctex"
@@ -284,10 +283,14 @@ position_smoothing_enabled = true
 position = Vector2(-256, 96)
 point1 = Vector2(150, 0)
 point2 = Vector2(2300, -170)
+max_spawn_attempts = 50
 item_radius = 16.0
 player_path = NodePath("../Player")
 min_distance_from_player = 70.0
-spawn_number_of_items = 10
+spawn_number_of_items = 16
+spawn_interval = 1.0
+spawn_per_cycle = 3
+max_active_items = 28
 
 [node name="Gun" parent="." unique_id=518531113 instance=ExtResource("6_wfshc")]
 position = Vector2(-156, 9)
@@ -358,74 +361,3 @@ shape = SubResource("RectangleShape2D_b56nn")
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1748429650]
 stream = ExtResource("13_kv3my")
 autoplay = true
-
-[node name="EndGameOverlay" type="Control" parent="." unique_id=1821683776]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Dim" type="ColorRect" parent="EndGameOverlay" unique_id=1439011463]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.62)
-
-[node name="CenterContainer" type="CenterContainer" parent="EndGameOverlay" unique_id=882687809]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="EndGameOverlay/CenterContainer" unique_id=640899425]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="EndGameOverlay/CenterContainer/PanelContainer" unique_id=1385702622]
-layout_mode = 2
-theme_override_constants/margin_left = 26
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 26
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="EndGameOverlay/CenterContainer/PanelContainer/MarginContainer" unique_id=1978576227]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Title" type="Label" parent="EndGameOverlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=34053513]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_endui")
-theme_override_font_sizes/font_size = 26
-text = "Game Over"
-horizontal_alignment = 1
-
-[node name="Detail" type="Label" parent="EndGameOverlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=338177810]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_endui")
-theme_override_font_sizes/font_size = 12
-text = "Result details"
-horizontal_alignment = 1
-
-[node name="RetryButton" type="Button" parent="EndGameOverlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1475508038]
-custom_minimum_size = Vector2(220, 38)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_endui")
-theme_override_font_sizes/font_size = 16
-text = "Retry"
-
-[node name="MainMenuButton" type="Button" parent="EndGameOverlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=304525144]
-custom_minimum_size = Vector2(220, 38)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("14_endui")
-theme_override_font_sizes/font_size = 16
-text = "Main Menu"
-
-[connection signal="pressed" from="EndGameOverlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RetryButton" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="EndGameOverlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_pressed"]

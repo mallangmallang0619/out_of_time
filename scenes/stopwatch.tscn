@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qwfodcvyp65t"]
 
-[ext_resource type="Script" uid="uid://cjn1vbv33ugix" path="res://scenes/time_label.gd" id="1_d33h4"]
+[ext_resource type="Script" uid="uid://cjn1vbv33ugix" path="res://scripts/time_label.gd" id="1_d33h4"]
 [ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_uny1b"]
 
 [node name="TimerUI" type="CanvasLayer" unique_id=936604829]

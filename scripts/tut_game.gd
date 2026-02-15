@@ -1,26 +1,38 @@
 extends Node2D
 
 @export var win_x_position: float = 2200.0
+@export var score_offset: int = 257
 
 @onready var player_node = $Player
 @onready var timer_label = $TestUI/Timer
-@onready var end_overlay: Control = $EndGameOverlay
-@onready var end_title: Label = $EndGameOverlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Title
-@onready var end_detail: Label = $EndGameOverlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Detail
 
 var _spawn_position: Vector2
 var _game_finished: bool = false
 
 func _ready() -> void:
 	_spawn_position = player_node.global_position
-	end_overlay.visible = false
-	end_overlay.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	_game_finished = false
+
+	# Reset run-level stats each new run.
+	player.x = 0
+	player.best_x = -1000000
+	player.end_title = "Game Over"
+	player.end_detail = ""
+	player.end_final_score = 0
+
 	player_node.death_finished.connect(_on_player_death_finished)
 	timer_label.time_expired.connect(_on_time_expired)
 
 func _process(_delta: float) -> void:
 	if _game_finished:
 		return
+
+	# Keep global score tracking in sync from live player position.
+	var current_distance = int(player_node.global_position.x - 137)
+	player.x = current_distance
+	if current_distance > player.best_x:
+		player.best_x = current_distance
+
 	if player_node.global_position.x >= win_x_position:
 		_show_end_screen("You Escaped!", "You reached the end of the level.")
 
@@ -36,19 +48,16 @@ func _on_time_expired() -> void:
 
 func _show_end_screen(title: String, detail: String) -> void:
 	_game_finished = true
-	end_title.text = title
-	end_detail.text = detail
-	end_overlay.visible = true
-	get_tree().paused = true
+	player.end_title = title
+	player.end_detail = detail
+
+	var live_distance = int(player_node.global_position.x - 137)
+	var best_distance = max(player.best_x, player.x, live_distance)
+	player.end_final_score = max(0, best_distance + score_offset)
+	player.x = 0
+	player.best_x = -1000000
+	get_tree().change_scene_to_file("res://scenes/end_game_overlay.tscn")
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
-
-func _on_retry_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/tut_game.tscn")
-
-func _on_main_menu_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var player_node = $Player
 @onready var timer_label = $TestUI/Timer
+@onready var spawn_area = $"Spawn Area"
 
 var _spawn_position: Vector2
 var _game_finished: bool = false
@@ -40,6 +41,8 @@ func _on_player_death_finished() -> void:
 	if _game_finished:
 		return
 	player_node.respawn(_spawn_position)
+	if spawn_area and spawn_area.has_method("regenerate_items"):
+		spawn_area.call_deferred("regenerate_items", _spawn_position)
 
 func _on_time_expired() -> void:
 	if _game_finished:

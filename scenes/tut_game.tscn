@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wr2n42q2y7uh" path="res://scenes/player.tscn" id="1_d6f80"]
 [ext_resource type="Texture2D" uid="uid://dyyu24vcfo0pb" path="res://assets/sprites/world_tileset.png" id="1_p0q0o"]
 [ext_resource type="Script" uid="uid://bxx07aa4p5urh" path="res://scripts/tut_game.gd" id="1_yv17d"]
-[ext_resource type="PackedScene" path="res://scenes/ui.tscn" id="3_kv3my"]
+[ext_resource type="PackedScene" uid="uid://dc3o0conf3881" path="res://scenes/ui.tscn" id="3_kv3my"]
 [ext_resource type="PackedScene" uid="uid://b5yp6adj5fvi" path="res://scenes/item_spawn_area.tscn" id="3_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
 [ext_resource type="PackedScene" uid="uid://dh5fsiijqflfr" path="res://scenes/Pickups/gun.tscn" id="6_wfshc"]
@@ -281,16 +281,19 @@ position_smoothing_enabled = true
 
 [node name="Spawn Area" parent="." unique_id=1951064101 instance=ExtResource("3_yu2b8")]
 position = Vector2(-256, 96)
-point1 = Vector2(150, 0)
-point2 = Vector2(2300, -170)
-max_spawn_attempts = 50
-item_radius = 16.0
 player_path = NodePath("../Player")
+max_spawn_attempts = 60
+spawn_number_of_items = 8
+spawn_interval = 0.8
+spawn_per_cycle = 2
+max_active_items = 12
 min_distance_from_player = 70.0
-spawn_number_of_items = 16
-spawn_interval = 1.0
-spawn_per_cycle = 3
-max_active_items = 28
+floor_clearance = 12.0
+spawn_ahead_min = 100.0
+right_spawn_bias = 0.85
+floor_surface_buffer = 8.0
+overlap_resolve_steps = 12
+refill_per_frame = 3
 
 [node name="Gun" parent="." unique_id=518531113 instance=ExtResource("6_wfshc")]
 position = Vector2(-156, 9)

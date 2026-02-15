@@ -1,6 +1,6 @@
 extends Area2D
 
-
 func _on_body_entered(body: Node2D) -> void:
-	print("I am the bone of my Sword...")
-	queue_free()
+	if body.has_method("grant_sword"):
+		body.grant_sword()
+		queue_free()

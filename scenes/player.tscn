@@ -196,5 +196,24 @@ shape = SubResource("CapsuleShape2D_qlg0r")
 script = ExtResource("3_qhqgy")
 metadata/_custom_type_script = "uid://cel6r1i5hm566"
 
-[node name="MovementComponent" type="Node" parent="." unique_id=205222992]
+[node name="MovementComponent" type="Node" parent="." unique_id=205222992 node_paths=PackedStringArray("jump_buffer_timer", "coyote_timer", "double_grace_timer")]
+script = ExtResource("4_dqkch")
+jump_buffer_timer = NodePath("jumpBufferTimer")
+coyote_timer = NodePath("CoyoteTimer")
+double_grace_timer = NodePath("DoubleGraceTimer")
+metadata/_custom_type_script = "uid://dcpg6gqw4qb5j"
+
+[node name="jumpBufferTimer" type="Timer" parent="MovementComponent" unique_id=1709458701]
+wait_time = 0.1
+one_shot = true
+script = ExtResource("4_dqkch")
+
+[node name="CoyoteTimer" type="Timer" parent="MovementComponent" unique_id=1506799134]
+wait_time = 0.08
+one_shot = true
+script = ExtResource("4_dqkch")
+
+[node name="DoubleGraceTimer" type="Timer" parent="MovementComponent" unique_id=722044002]
+wait_time = 0.12
+one_shot = true
 script = ExtResource("4_dqkch")

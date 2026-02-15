@@ -1,1 +1,2 @@
-res://scenes/tut_game.tscn
+res://scenes/main_menu.tscn
+res://scenes/main_menu.gd

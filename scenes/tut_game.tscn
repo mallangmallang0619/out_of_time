@@ -210,6 +210,7 @@ _data = {
 }
 
 [node name="Tut_Game" type="Node2D" unique_id=47072123]
+position = Vector2(-1, 0)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1196064487]
 tile_set = SubResource("TileSet_d1dsa")

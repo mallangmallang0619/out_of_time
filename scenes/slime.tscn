@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cxsa1cbkbjmss" path="res://scripts/slime.gd" id="1_4l1t8"]
 [ext_resource type="Texture2D" uid="uid://cqan7owphkf84" path="res://assets/sprites/slime_green.png" id="1_5jc4t"]
 [ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://scenes/killzone.tscn" id="2_4l1t8"]
+[ext_resource type="Script" uid="uid://cel6r1i5hm566" path="res://scenes/components/gravity_component.gd" id="4_pjw23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppcr1"]
 atlas = ExtResource("1_5jc4t")
@@ -43,7 +44,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da4t2"]
 size = Vector2(7, 9)
 
-[node name="Slime" type="Node2D" unique_id=1873282784]
+[node name="Slime" type="Node2D" unique_id=1322273006]
 script = ExtResource("1_4l1t8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1596454999]
@@ -66,3 +67,7 @@ target_position = Vector2(8, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=618442076]
 position = Vector2(0, 5)
 target_position = Vector2(-9, 0)
+
+[node name="GravityComponent" type="Node" parent="." unique_id=644778789]
+script = ExtResource("4_pjw23")
+metadata/_custom_type_script = "uid://cel6r1i5hm566"

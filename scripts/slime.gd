@@ -6,6 +6,9 @@ var direction = 1
 
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_left = $RayCastLeft
+@export_subgroup("Nodes")
+@export var gravity_component = GravityComponent
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

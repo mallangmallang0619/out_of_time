@@ -4,3 +4,4 @@ res://scenes/coin.tscn
 res://scenes/platform.tscn
 res://scenes/player.tscn
 res://gun.gd
+res://scenes/Pickups/gun.tscn

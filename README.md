@@ -21,11 +21,8 @@ project.godot  # Godot project configuration
 This project is built using multiple scenes, each responsible for a specific part of gameplay, UI, or game flow. Below is a detailed breakdown of some of the more important scenes on our game:
 
 `main_menu.tscn`
-
 Entry point for the game. Contains the main-menu where the player can start a new game or quit the game.
-
 `killzone.tscn`
-
 Detects when the player falls or touches a lethal zone. Triggers player death and endgame logic.
 
 ---

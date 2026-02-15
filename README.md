@@ -27,6 +27,7 @@ Entry point for the game. Contains the main-menu where the player can start a ne
 `killzone.tscn`
 
 Detects when the player falls or touches a lethal zone. Triggers player death and endgame logic.
+
 ---
 
 ## Scripts

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wr2n42q2y7uh" path="res://scenes/player.tscn" id="1_d6f80"]
 [ext_resource type="Texture2D" uid="uid://dyyu24vcfo0pb" path="res://assets/sprites/world_tileset.png" id="1_p0q0o"]
+[ext_resource type="Script" uid="uid://bxx07aa4p5urh" path="res://scenes/tut_game.gd" id="1_yv17d"]
 [ext_resource type="Script" uid="uid://o1u8laj8pxil" path="res://scripts/player.gd" id="2_oba2p"]
 [ext_resource type="PackedScene" uid="uid://c6nqyugsh0r0u" path="res://scenes/Pickups/coin.tscn" id="4_yv17d"]
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
@@ -174,6 +175,9 @@ texture = ExtResource("1_p0q0o")
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_yv17d")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0q0o"]
+size = Vector2(11, 18)
+
 [sub_resource type="Animation" id="Animation_p0q0o"]
 resource_name = "Move Platform"
 length = 1.5333333
@@ -213,7 +217,8 @@ _data = {
 }
 
 [node name="Tut_Game" type="Node2D" unique_id=47072123]
-position = Vector2(144, -96)
+position = Vector2(-1, 0)
+script = ExtResource("1_yv17d")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1196064487]
 tile_set = SubResource("TileSet_d1dsa")
@@ -223,6 +228,10 @@ layer_0/tile_data = PackedInt32Array(327671, 2, 1, 327672, 2, 1, 327673, 2, 1, 3
 [node name="Player" parent="." unique_id=771106788 instance=ExtResource("1_d6f80")]
 z_index = 5
 script = ExtResource("2_oba2p")
+
+[node name="CollisionShape2D" parent="Player" index="1" unique_id=881230379]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_p0q0o")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1062799658]
 zoom = Vector2(3, 3)

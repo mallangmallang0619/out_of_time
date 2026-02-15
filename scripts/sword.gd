@@ -5,12 +5,10 @@ extends Area2D
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_body_entered(body: Node2D) -> void:
-	print("*Bang, Bang* - you got gun")
+	print("I am the bone of my Sword...")
 	queue_free()

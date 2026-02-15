@@ -1,5 +1,6 @@
 CollisionShape2D
-AnimatedSprite2D
+Sprite2D
 Area2D
+AnimatedSprite2D
 VBoxContainer
 Button

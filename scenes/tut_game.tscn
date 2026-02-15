@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6nqyugsh0r0u" path="res://scenes/Pickups/coin.tscn" id="4_yv17d"]
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
 [ext_resource type="PackedScene" uid="uid://dh5fsiijqflfr" path="res://scenes/Pickups/gun.tscn" id="6_wfshc"]
+[ext_resource type="PackedScene" uid="uid://3adyqoxk2iii" path="res://scenes/Pickups/sword.tscn" id="7_coqna"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv17d"]
 texture = ExtResource("1_p0q0o")
@@ -212,7 +213,7 @@ _data = {
 }
 
 [node name="Tut_Game" type="Node2D" unique_id=47072123]
-position = Vector2(-1, 0)
+position = Vector2(144, -96)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1196064487]
 tile_set = SubResource("TileSet_d1dsa")
@@ -225,6 +226,7 @@ script = ExtResource("2_oba2p")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1062799658]
 zoom = Vector2(3, 3)
+limit_bottom = 100
 position_smoothing_enabled = true
 
 [node name="Coin" parent="." unique_id=1104549843 instance=ExtResource("4_yv17d")]
@@ -251,3 +253,6 @@ autoplay = &"Move Platform"
 
 [node name="Coin2" parent="." unique_id=1412761699 instance=ExtResource("4_yv17d")]
 position = Vector2(464, 52)
+
+[node name="Sword" parent="." unique_id=1607803304 instance=ExtResource("7_coqna")]
+position = Vector2(80, 48)

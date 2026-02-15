@@ -1,8 +1,6 @@
 res://scenes/tut_game.tscn
-res://scenes/coin.gd
-res://scenes/coin.tscn
-res://scenes/platform.tscn
-res://scenes/player.tscn
-res://gun.gd
+res://scenes/Pickups/sword.tscn
+res://scripts/sword.gd
 res://scenes/Pickups/gun.tscn
-res://scenes/Pickups/coin.tscn
+res://gun.gd
+res://scripts/player.gd

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://br7oihh020soy"]
+
+[ext_resource type="Texture2D" uid="uid://cqan7owphkf84" path="res://assets/sprites/slime_green.png" id="1_6a6p8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43il2"]
+atlas = ExtResource("1_6a6p8")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnekj"]
+atlas = ExtResource("1_6a6p8")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx635"]
+atlas = ExtResource("1_6a6p8")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfwtc"]
+atlas = ExtResource("1_6a6p8")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6uxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43il2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnekj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx635")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfwtc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1126477111]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1779991385]
+position = Vector2(7, -12)
+sprite_frames = SubResource("SpriteFrames_k6uxm")
+autoplay = "default"
+frame = 2
+frame_progress = 0.5192666

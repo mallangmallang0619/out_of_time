@@ -8,8 +8,6 @@ extends CharacterBody2D
 @export var movement_component: MovementComponent
 
 
-
-
 func _physics_process(delta:float) -> void:
 	
 	gravity_component.handle_gravity(self,delta)

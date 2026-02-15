@@ -1,6 +1,15 @@
-[gd_scene format=3 uid="uid://kcoqchinuj53"]
+[gd_scene format=3 uid="uid://c2inj7060dd4j"]
 
 [ext_resource type="Script" uid="uid://dcpg6gqw4qb5j" path="res://scenes/components/movement_component.gd" id="1_ayfyp"]
 
-[node name="MovementComponent" type="Node" unique_id=1043481672]
+[node name="MovementComponent" type="Node" unique_id=1043481672 node_paths=PackedStringArray("jump_buffer_timer")]
 script = ExtResource("1_ayfyp")
+jump_buffer_timer = NodePath("jumpBufferTimer")
+
+[node name="jumpBufferTimer" type="Timer" parent="." unique_id=1904734945]
+wait_time = 0.1
+one_shot = true
+script = ExtResource("1_ayfyp")
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1757177334]
+wait_time = 0.08

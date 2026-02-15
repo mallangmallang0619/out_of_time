@@ -1,70 +1,123 @@
 [gd_scene format=3 uid="uid://4hfvdirho7de"]
 
-[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://h333et38wvd1" path="res://scripts/main_menu.gd" id="1_m6b7p"]
+[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_3x0v5"]
 
-[sub_resource type="GDScript" id="GDScript_l6cm7"]
-script/source = "extends Control
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.109804, 0.141176, 0.188235, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.376471, 0.643137, 0.8, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.176471, 0.309804, 0.427451, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_start_pressed() -> void:
-	# TODO fix 
-	# E 0:00:01:403   main_menu.tscn::GDScript_l6cm7:15 @ _on_start_pressed(): Attempt to open script 'res://scenes/tut_game.gd' resulted in error 'File not found'.
-	get_tree().change_scene_to_file(\"res://scenes/tut_game.tscn\")
-
-
-func _on_quit_pressed() -> void:
-	get_tree().quit()
-"
-
-[node name="MainMenu" type="Control" unique_id=572898363]
+[node name="MainMenu" type="Control" unique_id=1257869157]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_l6cm7")
+script = ExtResource("1_m6b7p")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1166264345]
+[node name="Background" type="ColorRect" parent="." unique_id=1656992100]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -107.25
-offset_top = -35.25
-offset_right = 107.25
-offset_bottom = 35.25
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.0666667, 0.0941176, 1)
+
+[node name="StripeTop" type="ColorRect" parent="." unique_id=1017939320]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 110.0
+grow_horizontal = 2
+color = Color(0.172549, 0.317647, 0.482353, 0.35)
+
+[node name="StripeBottom" type="ColorRect" parent="." unique_id=1106817421]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.0941176, 0.176471, 0.278431, 0.45)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=522056931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Start" type="Button" parent="VBoxContainer" unique_id=245531390]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1778218383]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9700157, 0.8285981, 0.9049065, 1)
-theme_override_colors/font_pressed_color = Color(0.96862745, 0.827451, 0.90588236, 1)
-theme_override_colors/font_hover_color = Color(0.96862745, 0.827451, 0.90588236, 1)
-theme_override_fonts/font = ExtResource("1_l6cm7")
-text = "Start"
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="Quit" type="Button" parent="VBoxContainer" unique_id=223745368]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1402963260]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.96862745, 0.827451, 0.90588236, 1)
-theme_override_colors/font_pressed_color = Color(0.96862745, 0.827451, 0.90588236, 1)
-theme_override_colors/font_hover_color = Color(0.96862745, 0.827451, 0.90588236, 1)
-theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1395467034]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1193592496]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3x0v5")
+theme_override_font_sizes/font_size = 28
+text = "OUT OF TIME"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=773813951]
+modulate = Color(0.760784, 0.882353, 0.94902, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3x0v5")
+theme_override_font_sizes/font_size = 10
+text = "Run fast. Survive. Beat the clock."
+horizontal_alignment = 1
+
+[node name="Gap" type="Control" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=760070986]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1807117915]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3x0v5")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1742716148]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3x0v5")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 text = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]

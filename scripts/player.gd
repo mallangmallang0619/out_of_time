@@ -8,11 +8,18 @@ extends CharacterBody2D
 @export var animation_component: AnimationComponent
 
 var is_dead: bool = false
+var final_pos: int = 0
 
 # --- Ability inventory ---
-var has_gun: bool = false      # for double jump
-var has_sword: bool = false    # for wall jump
-var has_shield: bool = false   # for temporary speed
+var has_gun: bool = false		# for double jump
+var has_sword: bool = false		# for wall jump
+var has_shield: bool = false	# for temporary speed+
+
+# Signals for the UI
+
+signal shield_pickup(value)
+signal death_finished
+
 
 # --- Shield speed boost ---
 var shield_speed_timer: Timer = Timer.new()
@@ -31,14 +38,18 @@ func _ready():
 
 func grant_gun():
 	has_gun = true
+	player.has_gun = true
 	print("Double jump acquired!")
 
 func grant_sword():
 	has_sword = true
+	player.has_sword = true
 	print("Wall jump acquired!")
 
 func grant_shield():
 	has_shield = true
+	player.has_shield = true
+	emit_signal("shield_pickup", has_shield)
 	print("Speed boost acquired!")
 	if movement_component:
 		# Store original speed once
@@ -54,6 +65,7 @@ func _on_shield_speed_timeout():
 	if movement_component:
 		movement_component.speed = original_speed
 		has_shield = false
+		player.has_shield = false
 		print("Speed boost ended")
 
 func die() -> void:
@@ -63,16 +75,22 @@ func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
 	
-	#play death animation
+	# Play death animation first, then notify game controller.
 	if _animated_sprite.sprite_frames and _animated_sprite.sprite_frames.has_animation("death"):
 		_animated_sprite.play("death")
 	else:
-		#reset the death timer instead of from killzone
-		get_tree().reload_current_scene()
+		emit_signal("death_finished")
 
 func _on_animation_finished() -> void:
 	if is_dead and _animated_sprite.animation == &"death":
-		get_tree().reload_current_scene()
+		emit_signal("death_finished")
+
+func respawn(spawn_point: Vector2) -> void:
+	global_position = spawn_point
+	velocity = Vector2.ZERO
+	is_dead = false
+	if _animated_sprite.sprite_frames and _animated_sprite.sprite_frames.has_animation("idle"):
+		_animated_sprite.play("idle")
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -83,3 +101,10 @@ func _physics_process(delta: float) -> void:
 	movement_component.get_input(self, delta)
 	move_and_slide()
 	animation_component.update_animation(self)
+
+	# --- Update score based on x-distance ---
+	player.x = int(global_position.x - 137)
+	if player.x > player.best_x:
+		player.best_x = player.x
+
+		

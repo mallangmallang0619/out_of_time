@@ -36,10 +36,12 @@ func can_wall_jump(body: CharacterBody2D) -> bool:
 
 func consume_double_jump(body):
 	body.has_gun = false   # one-time consumable
+	player.has_gun= false
 
 
 func consume_wall_jump(body):
 	body.has_sword = false # one-time consumable
+	player.has_sword = false
 
 
 # ==========================================================
@@ -93,7 +95,6 @@ func _on_double_grace_timer_timeout() -> void:
 
 func get_input(body: CharacterBody2D, delta: float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
-
 	if body.is_on_floor():
 		jump_counter = 0
 		is_jumping = false

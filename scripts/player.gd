@@ -6,7 +6,6 @@ extends CharacterBody2D
 @export var gravity_component: GravityComponent
 @export var movement_component: MovementComponent
 @export var animation_component: AnimationComponent
-@onready var scorelabel: Label = $scorelabel
 
 var is_dead: bool = false
 var final_pos: int = 0
@@ -37,15 +36,15 @@ func _ready():
 		_animated_sprite.sprite_frames.set_animation_loop("death", false)
 
 func grant_gun():
-	has_gun = true
+	player.has_gun = true
 	print("Double jump acquired!")
 
 func grant_sword():
-	has_sword = true
+	player.has_sword = true
 	print("Wall jump acquired!")
 
 func grant_shield():
-	has_shield = true
+	player.has_shield = true
 	emit_signal("shield_pickup", has_shield)
 	print("Speed boost acquired!")
 	if movement_component:
@@ -92,6 +91,6 @@ func _physics_process(delta: float) -> void:
 	animation_component.update_animation(self)
 
 	# --- Update score based on x-distance ---
-	var x_distance = int(global_position.x-137)  
-	print(x_distance)
-	scorelabel.text = "Score: " + str(x_distance)
+	player.x = int(global_position.x-137)  
+	print(player.x)
+	

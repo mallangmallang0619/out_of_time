@@ -2,14 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://puc81yjndvfq" path="res://assets/sprites/itemsword.png" id="1_hfxbw"]
 [ext_resource type="Texture2D" uid="uid://dduaf35jqlu86" path="res://assets/sprites/item_shield.png" id="2_agviq"]
+[ext_resource type="Script" uid="uid://b2x8qlfl6h6mg" path="res://scripts/UI/ui_sword.gd" id="2_ukj8e"]
 [ext_resource type="Texture2D" uid="uid://djp6xk7ym12ma" path="res://assets/sprites/item_gun.png" id="3_8tx0x"]
 [ext_resource type="Script" uid="uid://cwhaevg32n8b2" path="res://scripts/UI/ui_shield.gd" id="3_xpksx"]
 [ext_resource type="Script" uid="uid://dgkmdlv31lxoi" path="res://scripts/UI/ui_gun.gd" id="4_3wlde"]
 [ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_b7qlu"]
 [ext_resource type="Script" uid="uid://cjn1vbv33ugix" path="res://scripts/time_label.gd" id="5_dilx4"]
+[ext_resource type="Script" uid="uid://dpbjgyve1jmei" path="res://scripts/UI/score.gd" id="8_24e4x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fdp8w"]
 font = ExtResource("4_b7qlu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_24e4x"]
+font = ExtResource("4_b7qlu")
+font_size = 8
 
 [node name="TestUI" type="CanvasLayer" unique_id=2132827783]
 
@@ -18,6 +24,7 @@ offset_top = 19.0
 offset_right = 32.0
 offset_bottom = 51.0
 texture = ExtResource("1_hfxbw")
+script = ExtResource("2_ukj8e")
 
 [node name="shield_icon" type="TextureRect" parent="." unique_id=1260365515 groups=["Interactions"]]
 offset_left = 21.0
@@ -43,3 +50,14 @@ offset_bottom = 21.0
 text = "00:00"
 label_settings = SubResource("LabelSettings_fdp8w")
 script = ExtResource("5_dilx4")
+
+[node name="score" type="Label" parent="." unique_id=1738339166]
+offset_left = 225.0
+offset_top = 3.0
+offset_right = 325.0
+offset_bottom = 13.0
+text = "SCORE: "
+label_settings = SubResource("LabelSettings_24e4x")
+script = ExtResource("8_24e4x")
+
+[connection signal="ready" from="score" to="shield_icon" method="_on_score_ready"]

@@ -5,6 +5,7 @@ extends Node2D
 @export var max_spawn_attempts: int = 10
 @export var item_radius: float = 32.0
 @export var wall_collision_mask: int = 1
+@export var player_collision_mask: int = 2
 @export var player_path: NodePath
 @export var min_distance_from_player: float = 100.0
 
@@ -34,12 +35,20 @@ func is_position_free(position: Vector2) -> bool:
 	var shape := CircleShape2D.new()
 	shape.radius = item_radius
 	
+	# test to see if item in a wall
 	var query := PhysicsShapeQueryParameters2D.new()
 	query.shape = shape
 	query.transform = Transform2D(0, position)
 	query.collision_mask = wall_collision_mask
 	
 	var result = space_state.intersect_shape(query)
+	
+	# test to see if item is in the player
+	query.shape = shape
+	query.transform = Transform2D(0, position)
+	query.collision_mask = player_collision_mask
+	
+	result = space_state.intersect_shape(query)
 	
 	# If hitting a wall → invalid
 	if not result.is_empty():
@@ -63,6 +72,7 @@ func spawn_item():
 			var item_instance = pick_random_item().instantiate()
 			item_instance.global_position = spawn_position
 			add_child(item_instance)
+			print("found a spot: ", spawn_position.x, ", ", spawn_position.y)
 			return
 		
 		attempts += 1
@@ -71,4 +81,5 @@ func spawn_item():
 
 func _ready() -> void:
 	randomize()
+	await get_tree().process_frame
 	spawn_item()

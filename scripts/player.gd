@@ -8,8 +8,9 @@ extends CharacterBody2D
 @export var wall_jump_y = -200  # vertical jump strength
 @export var wall_slide_speed = 40  # optional: slow sliding down walls
 @onready var _animated_sprite = $AnimatedSprite2D
+@export_subgroup("Nodes")
 var jump_counter = 0
-
+@export var gravity_component: GravityComponent
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var controls = {"move_right": [KEY_RIGHT, KEY_D],
@@ -31,7 +32,7 @@ func add_inputs():
 
 #delta is per frame
 #basic input handler
-func get_input(delta):
+func get_input(delta:float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
 	
 	if is_on_floor():
@@ -62,8 +63,8 @@ func get_input(delta):
 			jump_counter += 1
 
 
-func _physics_process(delta):
-
-	velocity.y += gravity*  delta
+func _physics_process(delta:float) -> void:
+	
+	gravity_component.handle_gravity(self,delta)
 	get_input(delta)
 	move_and_slide()

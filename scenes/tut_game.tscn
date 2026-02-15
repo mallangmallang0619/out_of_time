@@ -282,18 +282,18 @@ position_smoothing_enabled = true
 [node name="Spawn Area" parent="." unique_id=1951064101 instance=ExtResource("3_yu2b8")]
 position = Vector2(-256, 96)
 player_path = NodePath("../Player")
-max_spawn_attempts = 60
-spawn_number_of_items = 8
-spawn_interval = 0.8
-spawn_per_cycle = 2
-max_active_items = 12
+max_spawn_attempts = 40
+spawn_interval = 0.5
+max_active_items = 5
 min_distance_from_player = 70.0
-floor_clearance = 12.0
-spawn_ahead_min = 100.0
-right_spawn_bias = 0.85
-floor_surface_buffer = 8.0
-overlap_resolve_steps = 12
-refill_per_frame = 3
+spawn_behind_distance = 20.0
+spawn_ahead_min = 70.0
+spawn_ahead_max = 200.0
+right_spawn_bias = 0.95
+despawn_behind_distance = 180.0
+despawn_ahead_distance = 320.0
+despawn_vertical_distance = 170.0
+refill_per_frame = 1
 
 [node name="Gun" parent="." unique_id=518531113 instance=ExtResource("6_wfshc")]
 position = Vector2(-156, 9)

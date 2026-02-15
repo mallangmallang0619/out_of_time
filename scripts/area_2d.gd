@@ -26,13 +26,13 @@ extends Node2D
 @export var despawn_behind_distance: float = 340.0
 @export var despawn_ahead_distance: float = 540.0
 @export var despawn_vertical_distance: float = 220.0
-@export var level_left_x: float = 0.0
+@export var level_left_x: float = -256.0
 @export var level_right_x: float = 1844.0
 @export var level_top_y: float = -84.0
 @export var level_bottom_y: float = 96.0
-@export var floor_surface_buffer: float = 16.0
-@export var overlap_resolve_step: float = 4.0
-@export var overlap_resolve_steps: int = 16
+@export var floor_surface_buffer: float = 8.0
+@export var overlap_resolve_step: float = 2.0
+@export var overlap_resolve_steps: int = 10
 @export var refill_per_frame: int = 2
 
 @onready var pickups: Array[PackedScene] = [
@@ -58,13 +58,6 @@ func _process(delta: float) -> void:
 
 	_prune_distant_items()
 	_refill_items_immediately()
-
-	_spawn_accumulator += delta
-	if _spawn_accumulator < spawn_interval:
-		return
-
-	_spawn_accumulator = 0.0
-	_spawn_cycle()
 
 func regenerate_items(focus_position: Vector2 = Vector2.INF) -> void:
 	_is_regenerating = true
@@ -101,8 +94,8 @@ func spawn_item() -> bool:
 		var candidate = _find_spawn_candidate()
 		if candidate != null:
 			var item_instance = _pick_random_item().instantiate()
-			item_instance.global_position = candidate
 			add_child(item_instance)
+			item_instance.global_position = candidate
 			return true
 		attempts += 1
 	return false
@@ -223,11 +216,12 @@ func _sample_spawn_x(player_x: float) -> float:
 	var max_x = max(level_left_x + item_radius, level_right_x - item_radius)
 	var ahead_min_offset = max(spawn_ahead_min, min_distance_from_player + item_radius + 8.0)
 	var ahead_max_offset = max(spawn_ahead_max, ahead_min_offset + 20.0)
+	var ahead_min_x = clampf(player_x + ahead_min_offset, min_x, max_x)
+	var ahead_max_x = clampf(player_x + ahead_max_offset, min_x, max_x)
 
 	# Most spawns are ahead, but kept in a near-player window.
-	if randf() < right_spawn_bias:
-		var ahead_x = player_x + randf_range(ahead_min_offset, ahead_max_offset)
-		return clampf(ahead_x, min_x, max_x)
+	if randf() < right_spawn_bias and ahead_min_x < ahead_max_x:
+		return randf_range(ahead_min_x, ahead_max_x)
 
 	# Some spawns are slightly behind or near the player to keep local density up.
 	var behind_max = max(16.0, ahead_min_offset * 0.5)
@@ -266,13 +260,17 @@ func _prune_distant_items() -> void:
 	var player_pos = _get_player_position()
 	for child in get_children():
 		if child is Area2D and not child.is_queued_for_deletion():
+			if not _is_within_spawn_bounds(child.global_position.x) or not _is_within_spawn_height(child.global_position.y):
+				child.queue_free()
+				continue
+
 			var dx = child.global_position.x - player_pos.x
 			var dy = absf(child.global_position.y - player_pos.y)
 			if dx < -despawn_behind_distance or dx > despawn_ahead_distance or dy > despawn_vertical_distance:
 				child.queue_free()
 
 func _refill_items_immediately() -> void:
-	var target_active = max_active_items
+	var target_active = min(spawn_number_of_items, max_active_items)
 	var missing = max(0, target_active - _active_item_count())
 	var to_spawn = min(refill_per_frame, missing)
 	for _i in range(to_spawn):

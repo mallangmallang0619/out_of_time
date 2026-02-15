@@ -1,1 +1,6 @@
 res://scenes/tut_game.tscn
+res://scenes/coin.gd
+res://scenes/coin.tscn
+res://scenes/platform.tscn
+res://scenes/player.tscn
+res://gun.gd

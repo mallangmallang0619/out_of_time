@@ -46,6 +46,8 @@ radius = 5.0
 [node name="Player" type="CharacterBody2D" unique_id=771106788 node_paths=PackedStringArray("gravity_component")]
 collision_layer = 2
 script = ExtResource("1_g2els")
+speed = 115
+jump_speed = -220
 gravity_component = NodePath("GravityComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=427672156]

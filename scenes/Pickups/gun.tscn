@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dh5fsiijqflfr"]
 
-[ext_resource type="Script" uid="uid://df88j7k6dnyws" path="res://gun.gd" id="1_ge4jo"]
+[ext_resource type="Script" path="res://gun.gd" id="1_ge4jo"]
 [ext_resource type="Texture2D" uid="uid://chh7ns2h7uuwf" path="res://assets/sprites/fruit.png" id="2_3au7p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhy8l"]
@@ -22,6 +22,7 @@ animations = [{
 radius = 7.071068
 
 [node name="Gun" type="Area2D" unique_id=518531113]
+collision_mask = 2
 script = ExtResource("1_ge4jo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1386657716]

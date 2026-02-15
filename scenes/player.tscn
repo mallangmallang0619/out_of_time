@@ -4,10 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://nogh410fkp0x" path="res://assets/sprites/undead-running-Sheet.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dblp0xnvtnm5l" path="res://assets/sprites/undead-dying-Sheet.webp" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bpbqyf7soj3da" path="res://assets/sprites/undead-idle.png" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://d4ip3qmaau5p8" path="res://assets/sprites/flying-gun-Sheet.png" id="3_d2wvv"]
 [ext_resource type="Script" uid="uid://cel6r1i5hm566" path="res://scenes/components/gravity_component.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cfinl5rd1ecoo" path="res://assets/sprites/jumping-Sheet.webp" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://dcpg6gqw4qb5j" path="res://scenes/components/movement_component.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://ktms1krncvmu" path="res://scenes/components/animation_component.gd" id="5_n2s4m"]
+[ext_resource type="Texture2D" uid="uid://cvush544vwihn" path="res://assets/sprites/riding-the-shield-Sheet.png" id="6_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://b70b0uqh8iyqd" path="res://assets/sprites/sword-Sheet.png" id="8_3v2ag"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("2_fjrip")
@@ -24,6 +27,14 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
 atlas = ExtResource("2_fjrip")
 region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
+atlas = ExtResource("3_d2wvv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
+atlas = ExtResource("3_d2wvv")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("2_qlg0r")
@@ -89,6 +100,34 @@ region = Rect2(0, 64, 32, 32)
 atlas = ExtResource("2_dqkch")
 region = Rect2(32, 64, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
+atlas = ExtResource("6_ur7pv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
+atlas = ExtResource("6_ur7pv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
+atlas = ExtResource("8_3v2ag")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
+atlas = ExtResource("8_3v2ag")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+atlas = ExtResource("8_3v2ag")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_487ah"]
+atlas = ExtResource("8_3v2ag")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md1ol"]
+atlas = ExtResource("8_3v2ag")
+region = Rect2(32, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
 animations = [{
 "frames": [{
@@ -106,6 +145,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf23h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt7fs")
+}],
+"loop": true,
+"name": &"gun",
 "speed": 10.0
 }, {
 "frames": [{
@@ -170,6 +220,37 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujl30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31cv2")
+}],
+"loop": true,
+"name": &"shield",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqfne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl8cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_487ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md1ol")
+}],
+"loop": true,
+"name": &"sword",
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlg0r"]
@@ -186,7 +267,7 @@ animation_component = NodePath("AnimationComponent")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=427672156]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=881230379]

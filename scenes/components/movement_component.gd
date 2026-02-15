@@ -117,6 +117,7 @@ func get_input(body: CharacterBody2D, delta: float) -> void:
 		consume_double_jump(body)
 
 
+
 	# Horizontal movement
 	if direction:
 		body.velocity.x = lerp(body.velocity.x, direction * speed, acceleration * delta)
@@ -147,7 +148,6 @@ func get_input(body: CharacterBody2D, delta: float) -> void:
 			queued_double_jump = false
 			double_grace_timer.stop()
 			jump_buffer_timer.stop()
-
 			consume_wall_jump(body)
 
 
@@ -158,7 +158,6 @@ func get_input(body: CharacterBody2D, delta: float) -> void:
 
 			queued_double_jump = false
 			double_grace_timer.stop()
-
 			consume_double_jump(body)
 
 

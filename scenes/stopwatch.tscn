@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://qwfodcvyp65t"]
+
+[ext_resource type="Script" uid="uid://cjn1vbv33ugix" path="res://scenes/time_label.gd" id="1_d33h4"]
+[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_uny1b"]
+
+[node name="TimerUI" type="CanvasLayer" unique_id=936604829]
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1751804924]
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 54.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("1_uny1b")
+theme_override_font_sizes/font_size = 13
+text = "TEST"
+script = ExtResource("1_d33h4")

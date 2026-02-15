@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cfc8kva4ksy5c"]
+
+[ext_resource type="Texture2D" uid="uid://puc81yjndvfq" path="res://assets/sprites/itemsword.png" id="1_1etfg"]
+[ext_resource type="Texture2D" uid="uid://dduaf35jqlu86" path="res://assets/sprites/item_shield.png" id="2_7hsmw"]
+[ext_resource type="Texture2D" uid="uid://djp6xk7ym12ma" path="res://assets/sprites/item_gun.png" id="3_nysna"]
+
+[node name="hud" type="CanvasLayer" unique_id=1768330543]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2121393795]
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 163.0
+offset_bottom = 33.0
+size_flags_vertical = 4
+theme_override_constants/separation = 27
+
+[node name="Slot1" type="TextureRect" parent="HBoxContainer" unique_id=503447475]
+layout_mode = 2
+texture = ExtResource("1_1etfg")
+
+[node name="Slot2" type="TextureRect" parent="HBoxContainer" unique_id=327336171]
+layout_mode = 2
+texture = ExtResource("2_7hsmw")
+
+[node name="Slot3" type="TextureRect" parent="HBoxContainer" unique_id=1392431230]
+layout_mode = 2
+texture = ExtResource("3_nysna")

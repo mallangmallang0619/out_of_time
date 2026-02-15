@@ -2,14 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://wr2n42q2y7uh" path="res://scenes/player.tscn" id="1_d6f80"]
 [ext_resource type="Texture2D" uid="uid://dyyu24vcfo0pb" path="res://assets/sprites/world_tileset.png" id="1_p0q0o"]
-[ext_resource type="Script" uid="uid://bxx07aa4p5urh" path="res://scripts/tut_game.gd" id="1_yv17d"]
-[ext_resource type="PackedScene" uid="uid://ct814keff55vm" path="res://scenes/item_spawn_area.tscn" id="3_yu2b8"]
+[ext_resource type="Script" path="res://scripts/tut_game.gd" id="1_yv17d"]
+[ext_resource type="PackedScene" uid="uid://b5yp6adj5fvi" path="res://scenes/item_spawn_area.tscn" id="3_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://c6nqyugsh0r0u" path="res://scenes/Pickups/coin.tscn" id="4_yv17d"]
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
 [ext_resource type="PackedScene" uid="uid://dh5fsiijqflfr" path="res://scenes/Pickups/gun.tscn" id="6_wfshc"]
 [ext_resource type="PackedScene" uid="uid://3adyqoxk2iii" path="res://scenes/Pickups/sword.tscn" id="7_coqna"]
 [ext_resource type="PackedScene" uid="uid://cuom1kpwfx1g4" path="res://scenes/Pickups/shield.tscn" id="8_ykmxn"]
-[ext_resource type="PackedScene" path="res://killzone.tscn" id="9_yu2b8"]
+[ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://killzone.tscn" id="9_yu2b8"]
+[ext_resource type="PackedScene" uid="uid://qwfodcvyp65t" path="res://scenes/stopwatch.tscn" id="11_h3y6v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv17d"]
 texture = ExtResource("1_p0q0o")
@@ -280,3 +281,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=508683822]
 position = Vector2(-219, 109)
 shape = SubResource("WorldBoundaryShape2D_0otvx")
+
+[node name="TimerUI" parent="." unique_id=936604829 instance=ExtResource("11_h3y6v")]

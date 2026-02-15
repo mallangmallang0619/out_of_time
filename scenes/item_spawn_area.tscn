@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b5yp6adj5fvi"]
+
+[ext_resource type="Script" uid="uid://jrtj8ujip74l" path="res://scripts/area_2d.gd" id="1_jp7js"]
+
+[node name="Item Spawn Area" type="Area2D" unique_id=1818546805]
+script = ExtResource("1_jp7js")

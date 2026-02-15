@@ -57,10 +57,10 @@ func _on_double_grace_timer_timeout()->void:
 #basic input handler
 func get_input(body: CharacterBody2D, delta:float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
-	if direction > 0:
-		animated_sprite_2d.flip_h = false
-	elif direction < 0:
-		animated_sprite_2d.flip_h = true
+	#if direction > 0:
+		#animated_sprite_2d.flip_h = false
+	#elif direction < 0:
+		#animated_sprite_2d.flip_h = true
 	
 	if body.is_on_floor():
 		jump_counter = 0

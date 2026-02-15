@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cca7reghcj46h"]
+
+[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_bx5l6"]
+
+[node name="Distancescore" type="CanvasLayer" unique_id=871508016]
+
+[node name="scorelabel" type="Label" parent="." unique_id=1509003336]
+offset_left = 164.0
+offset_top = 6.0
+offset_right = 288.0
+offset_bottom = 22.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_bx5l6")
+theme_override_font_sizes/font_size = 13
+text = "DISTANCE: "

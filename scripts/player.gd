@@ -6,8 +6,10 @@ extends CharacterBody2D
 @export var gravity_component: GravityComponent
 @export var movement_component: MovementComponent
 @export var animation_component: AnimationComponent
+@onready var scorelabel: Label = $scorelabel
 
 var is_dead: bool = false
+var final_pos: int = 0
 
 # --- Ability inventory ---
 var has_gun: bool = false      # for double jump
@@ -82,3 +84,8 @@ func _physics_process(delta: float) -> void:
 	movement_component.get_input(self, delta)
 	move_and_slide()
 	animation_component.update_animation(self)
+
+	# --- Update score based on x-distance ---
+	var x_distance = int(global_position.x-137)  
+	print(x_distance)
+	scorelabel.text = "Score: " + str(x_distance)

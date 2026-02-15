@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://nogh410fkp0x" path="res://assets/sprites/undead-running-Sheet.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dblp0xnvtnm5l" path="res://assets/sprites/undead-dying-Sheet.webp" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bpbqyf7soj3da" path="res://assets/sprites/undead-idle.png" id="2_qlg0r"]
+[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_ur7pv"]
 [ext_resource type="Script" uid="uid://cel6r1i5hm566" path="res://scenes/components/gravity_component.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cfinl5rd1ecoo" path="res://assets/sprites/jumping-Sheet.webp" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://dcpg6gqw4qb5j" path="res://scenes/components/movement_component.gd" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://ktms1krncvmu" path="res://scenes/components/animation_component.gd" id="5_n2s4m"]
+[ext_resource type="Script" path="res://scenes/components/animation_component.gd" id="5_n2s4m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("2_fjrip")
@@ -183,10 +184,20 @@ gravity_component = NodePath("GravityComponent")
 movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 
+[node name="scorelabel" type="Label" parent="." unique_id=1247630699]
+offset_left = 36.0
+offset_top = -86.0
+offset_right = 160.0
+offset_bottom = -70.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_ur7pv")
+theme_override_font_sizes/font_size = 13
+text = "DISTANCE: "
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=427672156]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"jump"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=881230379]

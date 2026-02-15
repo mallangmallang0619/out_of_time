@@ -1,0 +1,8 @@
+res://scenes/tut_game.tscn
+res://scenes/Pickups/sword.tscn
+res://scripts/sword.gd
+res://scenes/Pickups/gun.tscn
+res://gun.gd
+res://scripts/player.gd
+res://scripts/area_2d.gd
+res://scenes/item_spawn_area.tscn

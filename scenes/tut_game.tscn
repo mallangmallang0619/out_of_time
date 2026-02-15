@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c6eurvo11hoql" path="res://scenes/slime.tscn" id="10_0otvx"]
 [ext_resource type="PackedScene" path="res://scenes/goal.tscn" id="13_6qfv2"]
 [ext_resource type="AudioStream" uid="uid://c5nk0me3l3te8" path="res://assets/music/time_for_adventure.mp3" id="13_kv3my"]
+[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="14_6qfv2"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kv3my"]
 load_path = "res://.godot/imported/Asset_13.png-dca5bc2db883b9f20774ee82d6faffb3.ctex"
@@ -370,4 +371,14 @@ stream = ExtResource("13_kv3my")
 autoplay = true
 
 [node name="Goal" parent="." unique_id=913996499 instance=ExtResource("13_6qfv2")]
-position = Vector2(2093, -144)
+position = Vector2(235, -35)
+
+[node name="How_To_Play" type="Label" parent="." unique_id=2039097199]
+offset_left = -172.0
+offset_top = -72.0
+offset_right = -29.0
+offset_bottom = -53.0
+theme_override_fonts/font = ExtResource("14_6qfv2")
+theme_override_font_sizes/font_size = 8
+text = "WASD for movement.
+Get to the end!"

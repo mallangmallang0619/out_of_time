@@ -36,14 +36,17 @@ func _ready():
 		_animated_sprite.sprite_frames.set_animation_loop("death", false)
 
 func grant_gun():
+	has_gun = true
 	player.has_gun = true
 	print("Double jump acquired!")
 
 func grant_sword():
+	has_sword = true
 	player.has_sword = true
 	print("Wall jump acquired!")
 
 func grant_shield():
+	has_shield = true
 	player.has_shield = true
 	emit_signal("shield_pickup", has_shield)
 	print("Speed boost acquired!")
@@ -61,6 +64,7 @@ func _on_shield_speed_timeout():
 	if movement_component:
 		movement_component.speed = original_speed
 		has_shield = false
+		player.has_shield = false
 		print("Speed boost ended")
 
 func die() -> void:

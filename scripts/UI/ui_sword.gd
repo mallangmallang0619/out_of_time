@@ -1,17 +1,7 @@
 extends TextureRect
 
-var previous: bool = false
-
-func toggle():
-	print("Shield UI updated")
-	visible = !visible
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	toggle()
+	visible = bool(player.has_sword)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if previous != player.has_sword:
-		toggle()
-	previous = player.has_sword
+func _process(_delta: float) -> void:
+	visible = bool(player.has_sword)

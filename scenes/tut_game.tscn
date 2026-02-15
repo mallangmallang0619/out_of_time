@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://bxx07aa4p5urh" path="res://scripts/tut_game.gd" id="1_yv17d"]
 [ext_resource type="PackedScene" uid="uid://dc3o0conf3881" path="res://scenes/ui.tscn" id="3_kv3my"]
 [ext_resource type="PackedScene" uid="uid://b5yp6adj5fvi" path="res://scenes/item_spawn_area.tscn" id="3_yu2b8"]
-[ext_resource type="PackedScene" uid="uid://c6nqyugsh0r0u" path="res://scenes/Pickups/coin.tscn" id="4_yv17d"]
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
 [ext_resource type="PackedScene" uid="uid://dh5fsiijqflfr" path="res://scenes/Pickups/gun.tscn" id="6_wfshc"]
 [ext_resource type="PackedScene" uid="uid://3adyqoxk2iii" path="res://scenes/Pickups/sword.tscn" id="7_coqna"]
@@ -254,8 +253,8 @@ repeat_size = Vector2(1, 0)
 repeat_times = 100
 
 [node name="Asset13" type="Sprite2D" parent="Parallax2D" unique_id=1117674857]
-position = Vector2(-284, -172.00002)
-scale = Vector2(1.0436137, 1.7624309)
+position = Vector2(-284, -206)
+scale = Vector2(1.4890966, 2.044199)
 texture = SubResource("CompressedTexture2D_kv3my")
 centered = false
 

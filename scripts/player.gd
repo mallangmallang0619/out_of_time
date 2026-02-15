@@ -97,5 +97,5 @@ func _physics_process(delta: float) -> void:
 
 	# --- Update score based on x-distance ---
 	player.x = int(global_position.x-137)  
-	print(player.x)
+
 	

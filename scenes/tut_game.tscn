@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wr2n42q2y7uh" path="res://scenes/player.tscn" id="1_d6f80"]
 [ext_resource type="Texture2D" uid="uid://dyyu24vcfo0pb" path="res://assets/sprites/world_tileset.png" id="1_p0q0o"]
 [ext_resource type="Script" uid="uid://bxx07aa4p5urh" path="res://scripts/tut_game.gd" id="1_yv17d"]
-[ext_resource type="PackedScene" uid="uid://dc3o0conf3881" path="res://scenes/ui.tscn" id="3_kv3my"]
+[ext_resource type="PackedScene" uid="uid://dc3o0conf3881" path="res://scenes/UI.tscn" id="3_kv3my"]
 [ext_resource type="PackedScene" uid="uid://b5yp6adj5fvi" path="res://scenes/item_spawn_area.tscn" id="3_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://c6nqyugsh0r0u" path="res://scenes/Pickups/coin.tscn" id="4_yv17d"]
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cuom1kpwfx1g4" path="res://scenes/Pickups/shield.tscn" id="8_ykmxn"]
 [ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://scenes/killzone.tscn" id="9_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://c6eurvo11hoql" path="res://scenes/slime.tscn" id="10_0otvx"]
-[ext_resource type="PackedScene" uid="uid://qwfodcvyp65t" path="res://scenes/stopwatch.tscn" id="11_h3y6v"]
 [ext_resource type="AudioStream" uid="uid://c5nk0me3l3te8" path="res://assets/music/time_for_adventure.mp3" id="13_kv3my"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv17d"]
@@ -345,8 +344,6 @@ shape = SubResource("RectangleShape2D_xxtc3")
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Killzone" unique_id=435828607]
 position = Vector2(1896.75, -81)
 shape = SubResource("RectangleShape2D_b56nn")
-
-[node name="TimerUI" parent="." unique_id=936604829 instance=ExtResource("11_h3y6v")]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1748429650]
 stream = ExtResource("13_kv3my")

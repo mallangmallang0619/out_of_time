@@ -1,46 +1,48 @@
-[gd_scene format=3 uid="uid://dp60ybgjw4h33"]
+[gd_scene format=3 uid="uid://b3xppklp37pk8"]
 
-[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_fhim4"]
-[ext_resource type="Script" uid="uid://dixw36qwktyne" path="res://scripts/end_game_overlay.gd" id="1_rx1ox"]
+[ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_font"]
+[ext_resource type="Script" uid="uid://dixw36qwktyne" path="res://scripts/end_game_overlay.gd" id="2_script"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-bg_color = Color(0.0980392, 0.133333, 0.180392, 0.94)
+bg_color = Color(0.109804, 0.141176, 0.188235, 0.92)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.435294, 0.682353, 0.886275, 0.75)
+border_color = Color(0.376471, 0.643137, 0.8, 0.8)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
-bg_color = Color(0.180392, 0.301961, 0.415686, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.176471, 0.309804, 0.427451, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
-[node name="EndGameOverlay" type="Control"]
+[node name="EndGameOverlay" type="Control" unique_id=1281265015]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rx1ox")
+script = ExtResource("2_script")
 
-[node name="Dim" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1041486013]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.66)
+color = Color(0.0470588, 0.0666667, 0.0941176, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1472199229]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,60 +50,180 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(280, 0)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=613751825]
+custom_minimum_size = Vector2(268, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1340521667]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1677412286]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 3
 
-[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1599063023]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fhim4")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="Detail" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Detail" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1901131833]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fhim4")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 8
 text = "Result details"
 horizontal_alignment = 1
-
 autowrap_mode = 2
 
-[node name="FinalScore" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="FinalScore" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1136318493]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fhim4")
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 11
 text = "Final Score: 0"
 horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="RetryButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(240, 28)
+[node name="Content" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1813340212]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fhim4")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-text = "Retry"
+theme_override_constants/separation = 3
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(240, 28)
+[node name="MainActions" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content" unique_id=1201023483]
+visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fhim4")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-text = "Main Menu"
+theme_override_constants/separation = 3
 
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RetryButton" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_pressed"]
+[node name="OpenSaveButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/MainActions" unique_id=1710917349]
+custom_minimum_size = Vector2(164, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "Enter Name"
+
+[node name="ShowScoresButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/MainActions" unique_id=1300666307]
+custom_minimum_size = Vector2(164, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "High Scores"
+
+[node name="RestartButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/MainActions" unique_id=543226702]
+custom_minimum_size = Vector2(164, 22)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "Restart"
+
+[node name="EndGameButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/MainActions" unique_id=676069245]
+custom_minimum_size = Vector2(164, 22)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "End Game"
+
+[node name="SaveSection" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content" unique_id=1275936031]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="SavePrompt" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/SaveSection" unique_id=120035260]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 8
+text = "Enter name for high score:"
+horizontal_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/SaveSection" unique_id=140731011]
+custom_minimum_size = Vector2(164, 18)
+layout_mode = 2
+placeholder_text = "Player"
+
+[node name="ConfirmSaveButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/SaveSection" unique_id=1179339332]
+custom_minimum_size = Vector2(164, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "Save Score"
+
+[node name="SaveStatus" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/SaveSection" unique_id=1112931709]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+
+[node name="BackFromSaveButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/SaveSection" unique_id=1169055468]
+custom_minimum_size = Vector2(164, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "Continue"
+
+[node name="ScoresSection" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content" unique_id=178855995]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="HighScoresText" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection" unique_id=1998423392]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 8
+text = "No scores yet."
+horizontal_alignment = 1
+
+[node name="ScoresPager" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection" unique_id=1815505908]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="PrevScoresButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection/ScoresPager" unique_id=815409044]
+custom_minimum_size = Vector2(44, 18)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "<"
+
+[node name="ScoresPageLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection/ScoresPager" unique_id=359489608]
+custom_minimum_size = Vector2(62, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 8
+text = "Page 1/1"
+horizontal_alignment = 1
+
+[node name="NextScoresButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection/ScoresPager" unique_id=331147855]
+custom_minimum_size = Vector2(44, 18)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = ">"
+
+[node name="BackFromScoresButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection" unique_id=1720489796]
+custom_minimum_size = Vector2(164, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "Back"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/MainActions/OpenSaveButton" to="." method="_on_open_save_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/MainActions/ShowScoresButton" to="." method="_on_show_scores_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/MainActions/RestartButton" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/MainActions/EndGameButton" to="." method="_on_end_game_pressed"]
+[connection signal="text_submitted" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/SaveSection/NameInput" to="." method="_on_name_input_text_submitted"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/SaveSection/ConfirmSaveButton" to="." method="_on_confirm_save_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/SaveSection/BackFromSaveButton" to="." method="_on_back_from_save_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection/ScoresPager/PrevScoresButton" to="." method="_on_prev_scores_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection/ScoresPager/NextScoresButton" to="." method="_on_next_scores_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Content/ScoresSection/BackFromScoresButton" to="." method="_on_back_from_scores_pressed"]

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cuom1kpwfx1g4" path="res://scenes/Pickups/shield.tscn" id="8_ykmxn"]
 [ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://scenes/killzone.tscn" id="9_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://c6eurvo11hoql" path="res://scenes/slime.tscn" id="10_0otvx"]
+[ext_resource type="PackedScene" uid="uid://ddhf3qo6teu6l" path="res://scenes/goal.tscn" id="13_6qfv2"]
 [ext_resource type="AudioStream" uid="uid://c5nk0me3l3te8" path="res://assets/music/time_for_adventure.mp3" id="13_kv3my"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kv3my"]
@@ -367,3 +368,6 @@ shape = SubResource("RectangleShape2D_b56nn")
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1748429650]
 stream = ExtResource("13_kv3my")
 autoplay = true
+
+[node name="Goal" parent="." unique_id=913996499 instance=ExtResource("13_6qfv2")]
+position = Vector2(235, -35)

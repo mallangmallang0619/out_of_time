@@ -257,7 +257,7 @@ animations = [{
 radius = 4.0
 height = 18.0
 
-[node name="Player" type="CharacterBody2D" unique_id=771106788 node_paths=PackedStringArray("gravity_component", "movement_component", "animation_component")]
+[node name="Player" type="CharacterBody2D" unique_id=771106788 node_paths=PackedStringArray("gravity_component", "movement_component", "animation_component") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_g2els")
 gravity_component = NodePath("GravityComponent")

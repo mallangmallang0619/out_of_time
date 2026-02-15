@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cuom1kpwfx1g4" path="res://scenes/Pickups/shield.tscn" id="8_ykmxn"]
 [ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://scenes/killzone.tscn" id="9_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://c6eurvo11hoql" path="res://scenes/slime.tscn" id="10_0otvx"]
-[ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://killzone.tscn" id="9_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://qwfodcvyp65t" path="res://scenes/stopwatch.tscn" id="11_h3y6v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv17d"]
@@ -300,4 +299,5 @@ shape = SubResource("RectangleShape2D_0otvx")
 
 [node name="Slime" parent="Killzone" unique_id=1873282784 instance=ExtResource("10_0otvx")]
 position = Vector2(-24, 37)
+
 [node name="TimerUI" parent="." unique_id=936604829 instance=ExtResource("11_h3y6v")]

@@ -184,9 +184,8 @@ movement_component = NodePath("MovementComponent")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=427672156]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.70277077
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=881230379]
 position = Vector2(0, -7)

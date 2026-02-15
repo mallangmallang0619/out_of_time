@@ -14,7 +14,7 @@ extends Node
 @export var wall_jump_y:int = -250  # vertical jump strength
 @export var wall_slide_speed:int = 40  
 @export var queued_double_jump: bool = false
-@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+#@export var animated_sprite_2d = AnimatedSprite2D
 
 var jump_counter:int = 0
 var is_jumping: bool = false
@@ -72,10 +72,6 @@ func _on_double_grace_timer_timeout()->void:
 #basic input handler
 func get_input(body: CharacterBody2D, delta:float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
-	if direction > 0:
-		animated_sprite_2d.flip_h = false
-	elif direction < 0:
-		animated_sprite_2d.flip_h = true
 	
 	if body.is_on_floor():
 		jump_counter = 0

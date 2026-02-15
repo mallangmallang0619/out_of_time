@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cel6r1i5hm566" path="res://scenes/components/gravity_component.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cfinl5rd1ecoo" path="res://assets/sprites/jumping-Sheet.webp" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://dcpg6gqw4qb5j" path="res://scenes/components/movement_component.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://ktms1krncvmu" path="res://scenes/components/animation_component.gd" id="5_n2s4m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("2_fjrip")
@@ -105,7 +106,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -175,16 +176,17 @@ animations = [{
 radius = 4.0
 height = 18.0
 
-[node name="Player" type="CharacterBody2D" unique_id=771106788 node_paths=PackedStringArray("gravity_component", "movement_component")]
+[node name="Player" type="CharacterBody2D" unique_id=771106788 node_paths=PackedStringArray("gravity_component", "movement_component", "animation_component")]
 collision_layer = 2
 script = ExtResource("1_g2els")
 gravity_component = NodePath("GravityComponent")
 movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=427672156]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=881230379]
@@ -216,3 +218,7 @@ script = ExtResource("4_dqkch")
 wait_time = 0.12
 one_shot = true
 script = ExtResource("4_dqkch")
+
+[node name="AnimationComponent" type="Node" parent="." unique_id=153308311 node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("5_n2s4m")
+animated_sprite = NodePath("../AnimatedSprite2D")

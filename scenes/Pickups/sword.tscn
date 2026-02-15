@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bw7ua40aecn" path="res://scripts/Pickups/sword.gd" id="1_xr0ue"]
 [ext_resource type="Texture2D" uid="uid://puc81yjndvfq" path="res://assets/sprites/itemsword.png" id="1_ylxrd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xr0ue"]
-radius = 14.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr0ue"]
+size = Vector2(20, 22)
 
 [node name="Sword" type="Area2D" unique_id=1607803304]
 collision_mask = 2
@@ -14,6 +14,7 @@ script = ExtResource("1_xr0ue")
 texture = ExtResource("1_ylxrd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=380289316]
-shape = SubResource("CircleShape2D_xr0ue")
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xr0ue")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

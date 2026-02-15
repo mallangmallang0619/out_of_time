@@ -14,6 +14,7 @@ extends Node
 @export var wall_jump_y:int = -250  # vertical jump strength
 @export var wall_slide_speed:int = 40  
 @export var queued_double_jump: bool = false
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 var jump_counter:int = 0
 var is_jumping: bool = false
@@ -22,6 +23,20 @@ var last_frame_on_floor:bool = false
 var controls = {"move_right": [KEY_RIGHT, KEY_D],
 "move_left": [KEY_LEFT, KEY_A],
 "jump": [KEY_UP, KEY_W, KEY_SPACE]}
+
+# --- Ability checks ---
+func can_double_jump(body: CharacterBody2D) -> bool:
+	return body.has_method("grant_sword") and body.has_sword
+
+func can_wall_jump(body: CharacterBody2D) -> bool:
+	return body.has_method("grant_shield") and body.has_shield
+
+func consume_double_jump(body):
+	body.has_sword = false
+
+func consume_wall_jump(body):
+	body.has_shield = false
+
 
 func _ready():
 	add_inputs()
@@ -74,7 +89,8 @@ func get_input(body: CharacterBody2D, delta:float) -> void:
 		jump_counter = 0
 
 	# Consume buffered double jump as soon as it becomes valid.
-	if queued_double_jump and jump_counter == 0 and not body.is_on_floor():
+	#if queued_double_jump and jump_counter == 0 and not body.is_on_floor():
+	if queued_double_jump and jump_counter == 0 and not body.is_on_floor() and can_double_jump(body):
 		jump(body)
 		jump_counter = 1
 		queued_double_jump = false
@@ -91,7 +107,16 @@ func get_input(body: CharacterBody2D, delta:float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if body.is_on_floor():
 			jump(body)
-		elif body.is_on_wall():
+		#elif body.is_on_wall():
+			## Wall jump.
+			#var wall_dir = body.get_wall_normal().x
+			#body.velocity.x = wall_dir * wall_jump_x
+			#body.velocity.y = wall_jump_y
+			#jump_counter = 0
+			#queued_double_jump = false
+			#double_grace_timer.stop()
+			#jump_buffer_timer.stop()
+		elif body.is_on_wall() and can_wall_jump(body):
 			# Wall jump.
 			var wall_dir = body.get_wall_normal().x
 			body.velocity.x = wall_dir * wall_jump_x
@@ -100,9 +125,14 @@ func get_input(body: CharacterBody2D, delta:float) -> void:
 			queued_double_jump = false
 			double_grace_timer.stop()
 			jump_buffer_timer.stop()
-		elif jump_counter == 0:
+			consume_wall_jump(body)
+		#elif jump_counter == 0:
+			#jump(body)
+			#jump_counter = 1
+		elif jump_counter == 0 and can_double_jump(body):
 			jump(body)
 			jump_counter = 1
+			consume_double_jump(body)
 			queued_double_jump = false
 			double_grace_timer.stop()
 		else:

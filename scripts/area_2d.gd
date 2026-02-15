@@ -4,7 +4,7 @@ extends Area2D
 @export var point2: Vector2 = Vector2(400,300)
 
 func get_random_point(p1: Vector2, p2: Vector2) -> Vector2:
-	
+	pass
 
 
 # Called when the node enters the scene tree for the first time.

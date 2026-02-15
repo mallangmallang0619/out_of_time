@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cuom1kpwfx1g4" path="res://scenes/Pickups/shield.tscn" id="8_ykmxn"]
 [ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://scenes/killzone.tscn" id="9_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://c6eurvo11hoql" path="res://scenes/slime.tscn" id="10_0otvx"]
-[ext_resource type="PackedScene" path="res://scenes/goal.tscn" id="13_6qfv2"]
+[ext_resource type="PackedScene" uid="uid://ddhf3qo6teu6l" path="res://scenes/goal.tscn" id="13_6qfv2"]
 [ext_resource type="AudioStream" uid="uid://c5nk0me3l3te8" path="res://assets/music/time_for_adventure.mp3" id="13_kv3my"]
 [ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="14_6qfv2"]
 
@@ -374,9 +374,9 @@ autoplay = true
 position = Vector2(235, -35)
 
 [node name="How_To_Play" type="Label" parent="." unique_id=2039097199]
-offset_left = -172.0
-offset_top = -72.0
-offset_right = -29.0
+offset_left = -169.0
+offset_top = -83.0
+offset_right = -26.0
 offset_bottom = -53.0
 theme_override_fonts/font = ExtResource("14_6qfv2")
 theme_override_font_sizes/font_size = 8

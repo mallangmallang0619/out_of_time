@@ -13,7 +13,6 @@ config_version=5
 config/name="out_of_time"
 run/main_scene="uid://4hfvdirho7de"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [autoload]
 

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wr2n42q2y7uh" path="res://scenes/player.tscn" id="1_d6f80"]
 [ext_resource type="Script" uid="uid://bxx07aa4p5urh" path="res://scripts/tut_game.gd" id="1_yv17d"]
 [ext_resource type="Texture2D" uid="uid://dr0xbyc7hns6i" path="res://assets/sprites/Train-Track-Platform-Sheet.webp" id="2_sl1ks"]
+[ext_resource type="Texture2D" uid="uid://vljgwi83kwn1" path="res://assets/sprites/background-final.png" id="2_xxtc3"]
 [ext_resource type="PackedScene" uid="uid://dc3o0conf3881" path="res://scenes/ui.tscn" id="3_kv3my"]
 [ext_resource type="PackedScene" uid="uid://b5yp6adj5fvi" path="res://scenes/item_spawn_area.tscn" id="3_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
@@ -14,9 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://ddhf3qo6teu6l" path="res://scenes/goal.tscn" id="13_6qfv2"]
 [ext_resource type="AudioStream" uid="uid://c5nk0me3l3te8" path="res://assets/music/time_for_adventure.mp3" id="13_kv3my"]
 [ext_resource type="FontFile" uid="uid://bd0hidewwb6n2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="14_6qfv2"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kv3my"]
-load_path = "res://.godot/imported/Asset_13.png-dca5bc2db883b9f20774ee82d6faffb3.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv17d"]
 texture = ExtResource("2_sl1ks")
@@ -256,9 +254,9 @@ repeat_size = Vector2(1, 0)
 repeat_times = 100
 
 [node name="Asset13" type="Sprite2D" parent="Parallax2D" unique_id=1117674857]
-position = Vector2(-284, -206)
+position = Vector2(-202, -212)
 scale = Vector2(1.4890966, 2.044199)
-texture = SubResource("CompressedTexture2D_kv3my")
+texture = ExtResource("2_xxtc3")
 centered = false
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1196064487]

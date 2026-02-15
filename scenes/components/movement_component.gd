@@ -36,10 +36,12 @@ func can_wall_jump(body: CharacterBody2D) -> bool:
 
 func consume_double_jump(body):
 	body.has_gun = false   # one-time consumable
+	player.has_gun= false
 
 
 func consume_wall_jump(body):
 	body.has_sword = false # one-time consumable
+	player.has_sword = false
 
 
 # ==========================================================

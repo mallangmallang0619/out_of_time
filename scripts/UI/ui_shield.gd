@@ -1,12 +1,17 @@
 extends TextureRect
 
+var previous: bool = false
 
-func _on_action_triggered():
+func toggle():
 	print("Shield UI updated")
 	visible = !visible
-	get_node("shield_icon").hide()
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	toggle()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print("have Shield?: ", player.has_shield)
-	pass
+	if previous != player.has_shield:
+		toggle()
+	previous = player.has_shield

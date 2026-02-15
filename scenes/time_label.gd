@@ -1,6 +1,6 @@
 extends Label
 
-var start_time := 60.0
+var start_time := 120.0
 var time_left := start_time
 var finished := false
 

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dyyu24vcfo0pb" path="res://assets/sprites/world_tileset.png" id="1_p0q0o"]
 [ext_resource type="Script" uid="uid://bxx07aa4p5urh" path="res://scripts/tut_game.gd" id="1_yv17d"]
 [ext_resource type="PackedScene" uid="uid://ct814keff55vm" path="res://scenes/item_spawn_area.tscn" id="3_yu2b8"]
-[ext_resource type="PackedScene" uid="uid://c6nqyugsh0r0u" path="res://scenes/Pickups/coin.tscn" id="4_yv17d"]
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
 [ext_resource type="PackedScene" uid="uid://dh5fsiijqflfr" path="res://scenes/Pickups/gun.tscn" id="6_wfshc"]
 [ext_resource type="PackedScene" uid="uid://3adyqoxk2iii" path="res://scenes/Pickups/sword.tscn" id="7_coqna"]
@@ -103,7 +102,7 @@ texture = ExtResource("1_p0q0o")
 9:3/0 = 0
 0:4/0 = 0
 1:4/0 = 0
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.1762905, 8, -2.1762905, 8, 8, -8, 8)
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.26115417, 8, 0.26115608, 8, 4.78784, -8, 4.613737, -8, 4.4396324)
 5:4/0 = 0
 6:4/0 = 0
 7:4/0 = 0
@@ -280,16 +279,13 @@ limit_bottom = 73
 position_smoothing_enabled = true
 
 [node name="Spawn Area" parent="." unique_id=1951064101 instance=ExtResource("3_yu2b8")]
-position = Vector2(-255, 96)
+position = Vector2(-256, 96)
 point1 = Vector2(150, 0)
 point2 = Vector2(2300, -170)
 item_radius = 16.0
 player_path = NodePath("../Player")
 min_distance_from_player = 70.0
-spawn_number_of_items = 20
-
-[node name="Coin" parent="." unique_id=1104549843 instance=ExtResource("4_yv17d")]
-position = Vector2(-123, 5)
+spawn_number_of_items = 10
 
 [node name="Gun" parent="." unique_id=518531113 instance=ExtResource("6_wfshc")]
 position = Vector2(-156, 9)
@@ -310,14 +306,11 @@ position = Vector2(418, 52)
 libraries/ = SubResource("AnimationLibrary_wfshc")
 autoplay = &"Move Platform"
 
-[node name="Coin2" parent="." unique_id=1412761699 instance=ExtResource("4_yv17d")]
-position = Vector2(464, 52)
-
 [node name="Sword" parent="." unique_id=1607803304 instance=ExtResource("7_coqna")]
 position = Vector2(-54, 29)
 
 [node name="Shield" parent="." unique_id=1066369259 instance=ExtResource("8_ykmxn")]
-position = Vector2(-81, 32)
+position = Vector2(-87, 21)
 
 [node name="Killzone" parent="." unique_id=768880633 instance=ExtResource("9_yu2b8")]
 collision_mask = 2

@@ -371,7 +371,7 @@ stream = ExtResource("13_kv3my")
 autoplay = true
 
 [node name="Goal" parent="." unique_id=913996499 instance=ExtResource("13_6qfv2")]
-position = Vector2(235, -35)
+position = Vector2(2088, -145)
 
 [node name="How_To_Play" type="Label" parent="." unique_id=2039097199]
 offset_left = -169.0

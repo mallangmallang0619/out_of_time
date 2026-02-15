@@ -18,6 +18,7 @@ var has_shield: bool = false	# for temporary speed+
 # Signals for the UI
 
 signal shield_pickup(value)
+signal death_finished
 
 
 # --- Shield speed boost ---
@@ -74,16 +75,22 @@ func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
 	
-	#play death animation
+	# Play death animation first, then notify game controller.
 	if _animated_sprite.sprite_frames and _animated_sprite.sprite_frames.has_animation("death"):
 		_animated_sprite.play("death")
 	else:
-		#reset the death timer instead of from killzone
-		get_tree().reload_current_scene()
+		emit_signal("death_finished")
 
 func _on_animation_finished() -> void:
 	if is_dead and _animated_sprite.animation == &"death":
-		get_tree().reload_current_scene()
+		emit_signal("death_finished")
+
+func respawn(spawn_point: Vector2) -> void:
+	global_position = spawn_point
+	velocity = Vector2.ZERO
+	is_dead = false
+	if _animated_sprite.sprite_frames and _animated_sprite.sprite_frames.has_animation("idle"):
+		_animated_sprite.play("idle")
 
 func _physics_process(delta: float) -> void:
 	if is_dead:

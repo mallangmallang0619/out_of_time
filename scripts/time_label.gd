@@ -1,30 +1,38 @@
 extends Label
 
-var start_time := 120.0
-var time_left := start_time
-var finished := false
+signal time_expired
 
-func _ready():
+@export var start_time: float = 120.0
+var time_left: float = start_time
+var finished: bool = false
+
+func _ready() -> void:
+	time_left = start_time
+	finished = false
 	update_display()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if finished:
 		return
-		
-	if time_left > 0:
-		time_left -= delta
-		update_display()
-	else:
-		time_left = 0
-		update_display()
-		trigger_death()
 
-func update_display():
-	var minutes = int(time_left / 60)
-	var seconds = int(time_left) % 60
+	time_left = max(0.0, time_left - delta)
+	update_display()
+
+	if time_left <= 0.0:
+		finished = true
+		emit_signal("time_expired")
+
+func update_display() -> void:
+	var minutes := int(time_left / 60.0)
+	var seconds := int(time_left) % 60
 	text = "%02d:%02d" % [minutes, seconds]
 
-func trigger_death():
-	finished = true
-	print("Time ran out!")
-	get_tree().reload_current_scene()
+func reset_timer(new_time: float = -1.0) -> void:
+	if new_time >= 0.0:
+		start_time = new_time
+	time_left = start_time
+	finished = false
+	update_display()
+
+func get_time_left() -> float:
+	return time_left

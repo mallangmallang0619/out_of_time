@@ -1,11 +1,13 @@
 extends Control
 
+@onready var _start_button: Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton
+@onready var _quit_button: Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	_start_button.grab_focus()
 
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/tut_game.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_quit_pressed() -> void:
+	get_tree().quit()

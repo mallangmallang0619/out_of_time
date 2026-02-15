@@ -8,6 +8,7 @@ extends Node2D
 @export var player_collision_mask: int = 2
 @export var player_path: NodePath
 @export var min_distance_from_player: float = 100.0
+@export var spawn_number_of_items: int = 1
 
 # Store pickups in an array (cleaner than if/else)
 @onready var pickups: Array[PackedScene] = [
@@ -80,6 +81,10 @@ func spawn_item():
 	print("Failed to find valid spawn location after ", max_spawn_attempts, " attempts.")
 
 func _ready() -> void:
+	var items_spawned: int = 0
+	
 	randomize()
 	await get_tree().process_frame
-	spawn_item()
+	while items_spawned < spawn_number_of_items:
+		spawn_item()
+		items_spawned += 1

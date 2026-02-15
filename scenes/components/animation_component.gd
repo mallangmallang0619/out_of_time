@@ -12,6 +12,9 @@ extends Node
 @export var jump_animation: StringName = &"jump"
 @export var fall_animation: StringName = &"jump"
 @export var death_animation: StringName = &"death"
+@export var shield_animation: StringName = &"shield"
+@export var gun_animation: StringName = &"gun"
+@export var sword_animation: StringName = &"sword"
 
 var _facing_sign: int = 1
 
@@ -26,14 +29,24 @@ func update_animation(body: CharacterBody2D) -> void:
 	if next_animation != &"" and (animated_sprite.animation != next_animation or not animated_sprite.is_playing()):
 		animated_sprite.play(next_animation)
 
-#selects animation based on deadzoned velocity
+# Select animation based on movement and player state.
 func _select_animation(body: CharacterBody2D) -> StringName:
+	if body.has_method("die") and bool(body.get("is_dead")):
+		return _valid_animation(death_animation, idle_animation)
+
 	if not body.is_on_floor():
 		if body.velocity.y < -y_deadzone:
+			#checks if player has gun is true 
+			if _has_flag(body, "has_gun", "grant_gun"):
+				return _valid_animation(gun_animation, jump_animation)
+			if _has_flag(body, "has_sword", "grant_sword"):
+				return _valid_animation(sword_animation, jump_animation)
 			return _valid_animation(jump_animation, idle_animation)
 		return _valid_animation(fall_animation, jump_animation)
 
 	if abs(body.velocity.x) > x_deadzone:
+		if _has_flag(body, "has_shield", "grant_shield"):
+			return _valid_animation(shield_animation, run_animation)
 		return _valid_animation(run_animation, idle_animation)
 	return _valid_animation(idle_animation, run_animation)
 
@@ -50,3 +63,6 @@ func _valid_animation(primary: StringName, fallback: StringName) -> StringName:
 	if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(fallback):
 		return fallback
 	return &""
+
+func _has_flag(body: CharacterBody2D, flag_name: String, grant_method: String) -> bool:
+	return body.has_method(grant_method) and bool(body.get(flag_name))

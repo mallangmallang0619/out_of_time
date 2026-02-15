@@ -60,6 +60,7 @@ func grant_shield():
 func _on_shield_speed_timeout():
 	if movement_component:
 		movement_component.speed = original_speed
+		has_shield = false
 		print("Speed boost ended")
 
 func die() -> void:

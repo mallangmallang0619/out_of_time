@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d2o7213gs5etc" path="res://scenes/killzone.tscn" id="9_yu2b8"]
 [ext_resource type="PackedScene" uid="uid://c6eurvo11hoql" path="res://scenes/slime.tscn" id="10_0otvx"]
 [ext_resource type="PackedScene" uid="uid://qwfodcvyp65t" path="res://scenes/stopwatch.tscn" id="11_h3y6v"]
+[ext_resource type="AudioStream" uid="uid://c5nk0me3l3te8" path="res://assets/music/time_for_adventure.mp3" id="13_kv3my"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv17d"]
 texture = ExtResource("1_p0q0o")
@@ -301,3 +302,7 @@ shape = SubResource("RectangleShape2D_0otvx")
 position = Vector2(-24, 37)
 
 [node name="TimerUI" parent="." unique_id=936604829 instance=ExtResource("11_h3y6v")]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1748429650]
+stream = ExtResource("13_kv3my")
+autoplay = true

@@ -1,6 +1,6 @@
 extends Area2D
 
-
 func _on_body_entered(body: Node2D) -> void:
-	print("The shield that protects!")
-	queue_free()
+	if body.has_method("grant_shield"):
+		body.grant_shield()
+		queue_free()

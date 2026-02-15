@@ -270,10 +270,10 @@ autoplay = &"Move Platform"
 position = Vector2(464, 52)
 
 [node name="Sword" parent="." unique_id=1607803304 instance=ExtResource("7_coqna")]
-position = Vector2(-54, 29)
+position = Vector2(-207, 0)
 
 [node name="Shield" parent="." unique_id=1066369259 instance=ExtResource("8_ykmxn")]
-position = Vector2(-81, 32)
+position = Vector2(-184, 1)
 
 [node name="Killzone" parent="." unique_id=768880633 instance=ExtResource("9_yu2b8")]
 collision_mask = 2

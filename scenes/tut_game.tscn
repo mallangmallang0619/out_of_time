@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cwdaf75srurvw" path="res://scenes/platform.tscn" id="5_gk7kp"]
 [ext_resource type="PackedScene" uid="uid://dh5fsiijqflfr" path="res://scenes/Pickups/gun.tscn" id="6_wfshc"]
 [ext_resource type="PackedScene" uid="uid://3adyqoxk2iii" path="res://scenes/Pickups/sword.tscn" id="7_coqna"]
+[ext_resource type="PackedScene" uid="uid://cuom1kpwfx1g4" path="res://scenes/Pickups/shield.tscn" id="8_ykmxn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv17d"]
 texture = ExtResource("1_p0q0o")
@@ -256,3 +257,6 @@ position = Vector2(464, 52)
 
 [node name="Sword" parent="." unique_id=1607803304 instance=ExtResource("7_coqna")]
 position = Vector2(80, 48)
+
+[node name="Shield" parent="." unique_id=1066369259 instance=ExtResource("8_ykmxn")]
+position = Vector2(-120, 1)

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cuom1kpwfx1g4"]
+
+[ext_resource type="Script" uid="uid://fv63gjjfojs3" path="res://scripts/Pickups/shield.gd" id="1_2l7y2"]
+[ext_resource type="Texture2D" uid="uid://dduaf35jqlu86" path="res://assets/sprites/item_shield.png" id="2_2l7y2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urvyk"]
+atlas = ExtResource("2_2l7y2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_urvyk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urvyk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l7y2"]
+size = Vector2(11, 24)
+
+[node name="Shield" type="Area2D" unique_id=1066369259]
+collision_mask = 2
+script = ExtResource("1_2l7y2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1233210623]
+sprite_frames = SubResource("SpriteFrames_urvyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=891236732]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_2l7y2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -9,6 +9,7 @@ extends Node
 @export var wall_jump_x = 150   # horizontal push away from wall
 @export var wall_jump_y = -200  # vertical jump strength
 @export var wall_slide_speed = 40  
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 var jump_counter = 0
 
 var controls = {"move_right": [KEY_RIGHT, KEY_D],
@@ -32,6 +33,10 @@ func add_inputs():
 #basic input handler
 func get_input(body: CharacterBody2D, delta:float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0:
+		animated_sprite_2d.flip_h = true
 	
 	if body.is_on_floor():
 		jump_counter = 0

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cgs78abems33g" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://o1u8laj8pxil" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://cel6r1i5hm566" path="res://scenes/components/gravity_component.gd" id="3_qhqgy"]
-[ext_resource type="Script" path="res://scenes/components/movement_component.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dcpg6gqw4qb5j" path="res://scenes/components/movement_component.gd" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")

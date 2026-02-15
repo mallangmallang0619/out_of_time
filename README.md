@@ -28,11 +28,11 @@ Entry point for the game. Contains the main-menu where the player can start a ne
 
 Detects when the player falls or touches a lethal zone. Triggers player death and endgame logic.
 
-`distance_score.tscn`
+`distance_score.tscn`:
 
 UI scene that tracks and displays distance traveled. Used for scoring or progression feedback.
 
-`player.tscn`
+`player.tscn`:
 
 Player character scene. Handles movement, jumping, animations, and player-related logic. Used in a majority of scenes in the project as it is the main player in the game.
 
